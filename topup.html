@@ -1,40 +1,31 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title> RAVS HOSTING</title>
-<link href="style.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top-Up Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<h1 id="game-title">Ravs Store</h1>
-</header>
-<section class="topup-container">
+    <header>
+        <h1 id="game-title">Top-Up Game</h1>
+    </header>
 
-<h2>Masukan Item</h2>
-<div class="price-list" id="price-options"></div>
-<h2>Dan Nomor WhatsApp</h2>
-<input id="whatsapp" placeholder="08xxxxxxxxxx" required="" type="tel"/>
-</section>
-<a class="back-link" href="index.html">← Kembali</a>
+    <section class="topup-container">
+        <h2>Masukkan ID Pemain</h2>
+        <input type="text" id="user-id" placeholder="Masukkan ID Pemain Anda" required>
 
-<script src="script.js"></script>
-<form><label>Slot Hosting:</label><label>Slot Hosting:</label><input name="slot" placeholder="Slot Hosting:" required="True" type="text"/><br/><label>RAM:</label><input name="ram" placeholder="RAM:" required="True" type="text"/><br/><label>CPU:</label><input name="cpu" placeholder="CPU:" required="True" type="text"/><br/><label>Storage:</label><input name="storage" placeholder="Storage:" required="True" type="text"/><br/><button type="submit">kirim</button></form><script>
-// Ambil parameter paket dari URL
-const urlParams = new URLSearchParams(window.location.search);
-const paket = urlParams.get('paket');
-<a class="back-link" href="index.html">← Kembali</a>
+        <h2>Pilih Nominal</h2>
+        <div class="price-list" id="price-options"></div>
 
-// Isi otomatis input SLOT jika tersedia
-if (paket) {
-  const slotInput = document.querySelector('input[name="slot"]');
-  if (slotInput) {
-    slotInput.value = paket;
-  }
-}
+        <h2>Nomor WhatsApp</h2>
+        <input type="tel" id="whatsapp" placeholder="08xxxxxxxxxx" required>
 
+        <button id="checkout-btn">Beli Sekarang</button>
+    </section>
 
-</script></body>
+    <a href="index.html" class="back-link">← Kembali</a>
+
+    <script src="script.js"></script>
+</body>
 </html>
