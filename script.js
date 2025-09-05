@@ -204,7 +204,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         let message = `Halo Admin, saya ingin top-up ${game} dengan detail:\n\nID: ${userId}\nNominal: ${selectedValue}\nHarga: Rp ${selectedPrice}`;
-        let whatsappUrl = `https://wa.me/6287854851480?text=${encodeURIComponent(message)}`;
+        let whatsappUrl = `https://wa.me/6281275347835?text=${encodeURIComponent(message)}`;
         window.location.href = whatsappUrl;
     });
 });
+
