@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title> RAVS HOSTING</title>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+<h1 id="game-title">Ravs Store</h1>
+</header>
+<section class="topup-container">
+
+<h2>Masukan Item</h2>
+<div class="price-list" id="price-options"></div>
+<h2>Dan Nomor WhatsApp</h2>
+<input id="whatsapp" placeholder="08xxxxxxxxxx" required="" type="tel"/>
+</section>
+<a class="back-link" href="index.html">← Kembali</a>
+
+<script src="script.js"></script>
+<form><label>Slot Hosting:</label><label>Slot Hosting:</label><input name="slot" placeholder="Slot Hosting:" required="True" type="text"/><br/><label>RAM:</label><input name="ram" placeholder="RAM:" required="True" type="text"/><br/><label>CPU:</label><input name="cpu" placeholder="CPU:" required="True" type="text"/><br/><label>Storage:</label><input name="storage" placeholder="Storage:" required="True" type="text"/><br/><button type="submit">kirim</button></form><script>
+// Ambil parameter paket dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const paket = urlParams.get('paket');
+<a class="back-link" href="index.html">← Kembali</a>
+
+// Isi otomatis input SLOT jika tersedia
+if (paket) {
+  const slotInput = document.querySelector('input[name="slot"]');
+  if (slotInput) {
+    slotInput.value = paket;
+  }
+}
+
+
+</script></body>
+</html>
