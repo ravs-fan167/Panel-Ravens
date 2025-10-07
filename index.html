@@ -11,38 +11,77 @@
   <!-- Header -->
   <header class="bg-gradient-to-r from-red-700 via-black to-blue-900 p-6 text-center">
     <h1 class="text-3xl font-bold">🔥 Ravs Store 🔥</h1>
-    <p class="text-slate-200">Hosting & Jasa Script and Website</p>
+    <p class="text-slate-200">Hosting & Jasa Development</p>
   </header>
 
-  <!-- Paket Hosting -->
   <main class="p-8 max-w-5xl mx-auto space-y-12">
+
+    <!-- Paket Hosting -->
     <section>
       <h2 class="text-2xl font-semibold mb-6 text-center">Paket Hosting</h2>
       <div class="grid md:grid-cols-3 gap-6">
-        <!-- Paket 1 -->
         <div class="bg-gradient-to-b from-blue-900 to-black p-6 rounded-2xl shadow text-center border border-red-700">
           <h3 class="text-xl font-bold text-red-400">Hosting SA:MP</h3>
-          <p class="mt-2 text-slate-300">Rp 20.000 / Bulan</p>
-          <a href="#orderHosting" class="mt-4 inline-block bg-red-500 hover:bg-red-600 px-4 py-2 rounded">Pesan</a>
+          <button onclick="selectHosting('SA:MP')" class="mt-4 bg-red-500 hover:bg-red-600 px-4 py-2 rounded">Pesan SA:MP</button>
         </div>
-        <!-- Paket 2 -->
         <div class="bg-gradient-to-b from-blue-900 to-black p-6 rounded-2xl shadow text-center border border-blue-600">
           <h3 class="text-xl font-bold text-blue-400">Hosting Minecraft</h3>
-          <p class="mt-2 text-slate-300">Rp 25.000 / Bulan</p>
-          <a href="#orderHosting" class="mt-4 inline-block bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">Pesan</a>
+          <button onclick="selectHosting('Minecraft')" class="mt-4 bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">Pesan Minecraft</button>
         </div>
-        <!-- Paket 3 -->
         <div class="bg-gradient-to-b from-red-900 to-black p-6 rounded-2xl shadow text-center border border-red-500">
           <h3 class="text-xl font-bold text-yellow-400">Hosting Bot Discord</h3>
-          <p class="mt-2 text-slate-300">Rp 15.000 / Bulan</p>
-          <a href="#orderHosting" class="mt-4 inline-block bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded text-black">Pesan</a>
+          <button onclick="selectHosting('Bot Discord')" class="mt-4 bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded text-black">Pesan Bot</button>
         </div>
       </div>
     </section>
 
+    <!-- Form Hosting -->
+    <section id="orderHosting" class="hidden bg-gradient-to-r from-black via-blue-900 to-red-900 p-6 rounded-2xl shadow space-y-4">
+      <h3 class="text-xl font-semibold mb-4">Pesan Hosting <span id="selectedHosting"></span></h3>
+
+      <form id="hostingForm" class="space-y-4">
+        <div>
+          <label class="block text-sm">Nama</label>
+          <input id="hostName" required class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
+        </div>
+        <div>
+          <label class="block text-sm">Nomor WhatsApp</label>
+          <input id="hostWa" required placeholder="628xxxxxxxxxx" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
+        </div>
+
+        <div>
+          <label class="block text-sm">RAM (GB)</label>
+          <input type="number" id="hostRam" min="1" value="1" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
+        </div>
+        <div>
+          <label class="block text-sm">CPU (Core)</label>
+          <input type="number" id="hostCpu" min="1" value="1" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
+        </div>
+        <div>
+          <label class="block text-sm">Storage (MB)</label>
+          <input type="number" id="hostStorage" min="50" step="50" value="50" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
+        </div>
+        <div>
+          <label class="block text-sm">Slot Player</label>
+          <input type="number" id="hostSlot" min="1" value="10" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
+        </div>
+
+        <div>
+          <label class="block text-sm">Catatan</label>
+          <textarea id="hostNote" rows="3" class="w-full mt-1 p-2 rounded bg-black border border-slate-700"></textarea>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Kirim Pesanan</button>
+          <div id="hostStatus" class="text-sm text-slate-200"></div>
+        </div>
+        <p id="hostPrice" class="mt-2 font-bold text-green-400"></p>
+      </form>
+    </section>
+
     <!-- Jasa Development -->
     <section>
-      <h2 class="text-2xl font-semibold mb-6 text-center">💻 Jasa Make Website And Script</h2>
+      <h2 class="text-2xl font-semibold mb-6 text-center">💻 Jasa Development</h2>
       <div class="bg-gradient-to-r from-black via-blue-900 to-red-900 p-6 rounded-2xl shadow">
         <form id="devForm" class="space-y-4">
           <div>
@@ -63,14 +102,13 @@
           <div>
             <label class="block text-sm">Jumlah Durasi</label>
             <input type="number" id="devAmount" value="1" min="1" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-            <p class="text-xs text-slate-400 mt-1">Misal: 2 Minggu = Rp100.000, 3 Bulan = Rp450.000</p>
           </div>
           <div>
             <label class="block text-sm">Catatan</label>
             <textarea id="devNote" rows="3" class="w-full mt-1 p-2 rounded bg-black border border-slate-700"></textarea>
           </div>
           <div class="flex items-center gap-3">
-            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Kirim Pesanan</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Kirim Pesanan</button>
             <div id="devStatus" class="text-sm text-slate-200"></div>
           </div>
           <p id="pricePreview" class="mt-2 font-bold text-green-400"></p>
@@ -84,6 +122,70 @@
   </footer>
 
   <script>
+    let selectedHosting = "";
+
+    function selectHosting(name) {
+      selectedHosting = name;
+      document.getElementById("selectedHosting").textContent = name;
+      document.getElementById("orderHosting").classList.remove("hidden");
+      updateHostPrice();
+    }
+
+    function updateHostPrice() {
+      const ram = parseInt(document.getElementById("hostRam").value) || 0;
+      const cpu = parseInt(document.getElementById("hostCpu").value) || 0;
+      const storage = parseInt(document.getElementById("hostStorage").value) || 0;
+      const slot = parseInt(document.getElementById("hostSlot").value) || 0;
+
+      const harga = (ram * 10000) + (cpu * 5000) + ((storage/50) * 10000) + (slot * 1000);
+      document.getElementById("hostPrice").textContent = "💰 Total Harga: Rp" + harga.toLocaleString();
+      return harga;
+    }
+
+    document.getElementById("hostRam").addEventListener("input", updateHostPrice);
+    document.getElementById("hostCpu").addEventListener("input", updateHostPrice);
+    document.getElementById("hostStorage").addEventListener("input", updateHostPrice);
+    document.getElementById("hostSlot").addEventListener("input", updateHostPrice);
+
+    document.getElementById('hostingForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('hostName').value.trim();
+      const wa = document.getElementById('hostWa').value.trim();
+      const ram = document.getElementById("hostRam").value;
+      const cpu = document.getElementById("hostCpu").value;
+      const storage = document.getElementById("hostStorage").value;
+      const slot = document.getElementById("hostSlot").value;
+      const note = document.getElementById('hostNote').value.trim();
+      const statusEl = document.getElementById('hostStatus');
+      const harga = updateHostPrice();
+
+      statusEl.textContent = `Mengirim...`;
+
+      try {
+        const res = await fetch('/api/order', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ 
+            paket: 'hosting ' + selectedHosting, 
+            name, 
+            wa, 
+            note: `RAM: ${ram}GB, CPU: ${cpu} Core, Storage: ${storage}MB, Slot: ${slot}, Total: Rp${harga.toLocaleString()}\n${note}` 
+          })
+        });
+        const json = await res.json();
+        if (res.ok) {
+          statusEl.textContent = '✅ Pesanan Hosting terkirim!';
+          document.getElementById('hostingForm').reset();
+          updateHostPrice();
+        } else {
+          statusEl.textContent = '❌ Gagal: ' + (json?.message || res.statusText);
+        }
+      } catch (err) {
+        statusEl.textContent = '⚠️ Error koneksi.';
+      }
+    });
+
+    // ==== JASA DEV ====
     const typeEl = document.getElementById('devType');
     const amountEl = document.getElementById('devAmount');
     const pricePreview = document.getElementById('pricePreview');
@@ -140,4 +242,3 @@
   </script>
 </body>
 </html>
-
