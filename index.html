@@ -122,6 +122,8 @@
   </footer>
 
   <script>
+    const ADMIN_WA = "6281275347835"; // 🔥 GANTI DENGAN NOMOR WHATSAPP KAMU TANPA + DAN TANPA 0 DEPAN
+
     let selectedHosting = "";
 
     function selectHosting(name) {
@@ -147,6 +149,7 @@
     document.getElementById("hostStorage").addEventListener("input", updateHostPrice);
     document.getElementById("hostSlot").addEventListener("input", updateHostPrice);
 
+    // === Hosting Order ===
     document.getElementById('hostingForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('hostName').value.trim();
@@ -172,11 +175,26 @@
             note: `RAM: ${ram}GB, CPU: ${cpu} Core, Storage: ${storage}MB, Slot: ${slot}, Total: Rp${harga.toLocaleString()}\n${note}` 
           })
         });
+
         const json = await res.json();
         if (res.ok) {
           statusEl.textContent = '✅ Pesanan Hosting terkirim!';
           document.getElementById('hostingForm').reset();
           updateHostPrice();
+
+          // 🔥 Kirim ke WhatsApp admin otomatis
+          const pesan = 
+`🔥 *Pesanan Hosting Baru* 🔥
+Nama: ${name}
+WA: ${wa}
+Paket: ${selectedHosting}
+RAM: ${ram} GB
+CPU: ${cpu} Core
+Storage: ${storage} MB
+Slot: ${slot}
+Harga: Rp${harga.toLocaleString()}
+Catatan: ${note}`;
+          window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(pesan)}`, '_blank');
         } else {
           statusEl.textContent = '❌ Gagal: ' + (json?.message || res.statusText);
         }
@@ -185,7 +203,7 @@
       }
     });
 
-    // ==== JASA DEV ====
+    // === Jasa Dev ===
     const typeEl = document.getElementById('devType');
     const amountEl = document.getElementById('devAmount');
     const pricePreview = document.getElementById('pricePreview');
@@ -227,11 +245,22 @@
             note: `Durasi: ${amount} ${type}, Total: Rp${harga.toLocaleString()}\n${note}` 
           })
         });
+
         const json = await res.json();
         if (res.ok) {
           statusEl.textContent = '✅ Pesanan Jasa Dev terkirim!';
           document.getElementById('devForm').reset();
           updatePrice();
+
+          // 🔥 Kirim ke WhatsApp admin otomatis
+          const pesan =
+`💻 *Pesanan Jasa Development Baru* 💻
+Nama: ${name}
+WA: ${wa}
+Durasi: ${amount} ${type}
+Harga: Rp${harga.toLocaleString()}
+Catatan: ${note}`;
+          window.open(`https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(pesan)}`, '_blank');
         } else {
           statusEl.textContent = '❌ Gagal: ' + (json?.message || res.statusText);
         }
@@ -242,4 +271,3 @@
   </script>
 </body>
 </html>
-
