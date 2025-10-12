@@ -1,40 +1,420 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ravs Store Hosting & Jasa</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-black text-white font-sans">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ravs Store Hosting & Jasa — Pesanan</title>
 
-  <!-- Header -->
-  <header class="bg-gradient-to-r from-red-700 via-black to-blue-900 p-6 text-center">
-    <h1 class="text-3xl font-bold">🔥 Ravs Store 🔥</h1>
-    <p class="text-slate-200">Hosting & Jasa Script and Website</p>
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom styles tambahan untuk memperbagus isi -->
+  <style>
+    :root{
+      --glass-bg: rgba(255,255,255,0.04);
+      --accent: linear-gradient(90deg,#ef4444,#0ea5e9);
+      --card-border: rgba(255,255,255,0.06);
+    }
+
+    body {
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(14,165,233,0.06), transparent 5%),
+                  radial-gradient(900px 400px at 90% 90%, rgba(239,68,68,0.05), transparent 5%),
+                  #000000;
+      min-height:100vh;
+    }
+
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(6px) saturate(120%);
+      border: 1px solid var(--card-border);
+    }
+
+    .fancy-title {
+      background: -webkit-linear-gradient(#fff, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 18px rgba(0,0,0,0.6));
+    }
+
+    /* tombol lebih menarik */
+    .btn-accent {
+      background: linear-gradient(90deg,#ef4444,#0ea5e9);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(14,165,233,0.08), inset 0 -3px 8px rgba(0,0,0,0.12);
+    }
+
+    /* input fokus */
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      box-shadow: 0 6px 18px rgba(14,165,233,0.06);
+      border-color: rgba(14,165,233,0.6);
+    }
+
+    /* animasi muncul form */
+    .fade-up { transform: translateY(8px); opacity: 0; transition: all .36s cubic-bezier(.2,.9,.2,1); }
+    .fade-up.show { transform: translateY(0); opacity: 1; }
+
+    /* kecilkan placeholder warna */
+    ::placeholder { color: rgba(203,213,225,0.18); }
+
+    /* responsive tweak */
+    @media (min-width:768px){
+      .content-grid { display: grid; grid-template-columns: 1fr 420px; gap: 28px; align-items: start; }
+    }
+  </style>
+</head>
+<body class="text-slate-100 antialiased font-sans">
+
+  <header class="py-8 text-center">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-4xl font-extrabold fancy-title">🔥 Ravs Store 🔥</h1>
+      <p class="text-slate-300 mt-1">Hosting • Jasa Script • Website — Pesan cepat lewat WhatsApp</p>
+    </div>
   </header>
 
-  <main class="p-8 max-w-5xl mx-auto space-y-12">
+  <main class="max-w-5xl mx-auto px-4 pb-16">
 
-    <!-- Paket Hosting -->
-    <section>
-      <h2 class="text-2xl font-semibold mb-6 text-center">Paket Hosting</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-gradient-to-b from-blue-900 to-black p-6 rounded-2xl shadow text-center border border-red-700">
-          <h3 class="text-xl font-bold text-red-400">Hosting SA:MP</h3>
-          <button onclick="selectHosting('SA:MP')" class="mt-4 bg-red-500 hover:bg-red-600 px-4 py-2 rounded">Pesan SA:MP</button>
-        </div>
-        <div class="bg-gradient-to-b from-blue-900 to-black p-6 rounded-2xl shadow text-center border border-blue-600">
-          <h3 class="text-xl font-bold text-blue-400">Hosting Minecraft</h3>
-          <button onclick="selectHosting('Minecraft')" class="mt-4 bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded">Pesan Minecraft</button>
-        </div>
-        <div class="bg-gradient-to-b from-red-900 to-black p-6 rounded-2xl shadow text-center border border-red-500">
-          <h3 class="text-xl font-bold text-yellow-400">Hosting Bot Discord</h3>
-          <button onclick="selectHosting('Bot Discord')" class="mt-4 bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded text-black">Pesan Bot</button>
-        </div>
-      </div>
-    </section>
+    <div class="content-grid">
 
+      <!-- kiri: paket + form hosting -->
+      <section class="space-y-8">
+
+        <div class="glass rounded-2xl p-6">
+          <h2 class="text-2xl font-semibold">Paket Hosting</h2>
+          <p class="text-slate-400 text-sm mt-1">Pilih paket lalu isi detail pesanan.</p>
+
+          <div class="mt-6 grid md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl glass text-center border" data-paket="SA:MP">
+              <h3 class="font-bold text-red-300">Hosting SA:MP</h3>
+              <p class="text-xs text-slate-400 mt-1">Slot & storage custom</p>
+              <button class="mt-4 w-full py-2 rounded btn-accent hover:opacity-95 select-paket">Pilih</button>
+            </div>
+            <div class="p-4 rounded-xl glass text-center border" data-paket="Minecraft">
+              <h3 class="font-bold text-blue-300">Hosting Minecraft</h3>
+              <p class="text-xs text-slate-400 mt-1">Dukungan plugin & mod</p>
+              <button class="mt-4 w-full py-2 rounded btn-accent hover:opacity-95 select-paket">Pilih</button>
+            </div>
+            <div class="p-4 rounded-xl glass text-center border" data-paket="Bot Discord">
+              <h3 class="font-bold text-yellow-300">Hosting Bot Discord</h3>
+              <p class="text-xs text-slate-400 mt-1">Uptime & monitoring</p>
+              <button class="mt-4 w-full py-2 rounded btn-accent hover:opacity-95 select-paket">Pilih</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Pesanan (Hosting) -->
+        <div id="orderCard" class="glass rounded-2xl p-6 fade-up">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-xl font-semibold">Form Pesanan Hosting</h3>
+              <p class="text-slate-400 text-sm">Isi detail, lalu tekan Kirim Pesanan.</p>
+            </div>
+            <div class="text-sm text-slate-400" id="selectedLabel">Belum memilih paket</div>
+          </div>
+
+          <form id="hostingForm" class="mt-4 space-y-4">
+            <input type="text" id="hostName" placeholder="Nama lengkap (contoh: Rio Revan)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
+            <input type="tel" id="hostWa" placeholder="Nomor WhatsApp pemesan (628...)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
+
+            <div class="grid grid-cols-2 gap-3">
+              <input type="number" id="hostRam" min="1" value="1" class="p-3 rounded bg-black/40 border border-slate-700" placeholder="RAM (GB)" />
+              <input type="number" id="hostCpu" min="1" value="1" class="p-3 rounded bg-black/40 border border-slate-700" placeholder="CPU (Core)" />
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <input type="number" id="hostStorage" min="50" step="50" value="50" class="p-3 rounded bg-black/40 border border-slate-700" placeholder="Storage (MB)" />
+              <input type="number" id="hostSlot" min="1" value="10" class="p-3 rounded bg-black/40 border border-slate-700" placeholder="Slot Player" />
+            </div>
+
+            <textarea id="hostNote" rows="3" placeholder="Catatan / kebutuhan tambahan (opsional)" class="w-full p-3 rounded bg-black/40 border border-slate-700"></textarea>
+
+            <div class="flex items-center gap-3">
+              <button id="sendHostingBtn" type="submit" class="btn-accent px-4 py-2 rounded font-semibold">Kirim Pesanan</button>
+              <div id="hostStatus" class="text-sm text-slate-300"></div>
+            </div>
+
+            <p id="hostPrice" class="text-sm font-bold text-emerald-400"></p>
+            <p id="waFallback" class="text-xs text-slate-400 hidden mt-1">Jika WhatsApp tidak otomatis terbuka, <a id="fallbackLink" href="#" target="_blank" class="text-blue-300 underline">klik di sini</a>.</p>
+          </form>
+        </div>
+
+      </section>
+
+      <!-- kanan: jasa dev + ringkasan -->
+      <aside class="space-y-6">
+        <div class="glass rounded-2xl p-6">
+          <h3 class="text-xl font-semibold">💻 Jasa Script & Website</h3>
+          <form id="devForm" class="mt-4 space-y-3">
+            <input id="devName" placeholder="Nama" class="w-full p-3 rounded bg-black/40 border border-slate-700" required />
+            <input id="devWa" placeholder="Nomor WA (628...)" class="w-full p-3 rounded bg-black/40 border border-slate-700" required />
+            <div class="grid grid-cols-2 gap-3">
+              <select id="devType" class="p-3 rounded bg-black/40 border border-slate-700">
+                <option value="minggu">Minggu (Rp50.000 / Minggu)</option>
+                <option value="bulan">Bulan (Rp150.000 / Bulan)</option>
+              </select>
+              <input id="devAmount" type="number" value="1" min="1" class="p-3 rounded bg-black/40 border border-slate-700" />
+            </div>
+            <textarea id="devNote" rows="3" placeholder="Catatan / deskripsi pekerjaan" class="w-full p-3 rounded bg-black/40 border border-slate-700"></textarea>
+
+            <div class="flex items-center gap-3">
+              <button id="sendDevBtn" type="submit" class="btn-accent px-4 py-2 rounded font-semibold">Kirim Pesanan</button>
+              <div id="devStatus" class="text-sm text-slate-300"></div>
+            </div>
+            <p id="pricePreview" class="text-sm font-bold text-emerald-400"></p>
+            <p class="text-xs text-slate-400 mt-2">Setelah kirim, pesan akan otomatis terbuka di WhatsApp admin.</p>
+          </form>
+        </div>
+
+        <div class="glass rounded-2xl p-6 text-sm text-slate-300">
+          <h4 class="font-medium">Informasi</h4>
+          <ul class="mt-2 space-y-1">
+            <li>• Pastikan nomor WA kamu dimulai dengan 62 (contoh: 6281234...).</li>
+            <li>• Jika WhatsApp web/HP tidak terbuka otomatis, gunakan tautan cadangan yang muncul setelah pengiriman.</li>
+            <li>• Data juga tetap dikirim ke endpoint <code class="text-xs">/api/order</code> (jika tersedia).</li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="text-center text-slate-400 pb-8">
+    &copy; 2025 Ravs Store — All Rights Reserved
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // === GANTI NOMOR WA ADMIN DI SINI (format: 628xxxxxxxxx) ===
+    const ADMIN_WA = "6281234567890";
+
+    // util: hitung harga hosting (sama logika sebelumnya)
+    function calcHostPrice() {
+      const ram = parseInt(document.getElementById("hostRam").value) || 0;
+      const cpu = parseInt(document.getElementById("hostCpu").value) || 0;
+      const storage = parseInt(document.getElementById("hostStorage").value) || 0;
+      const slot = parseInt(document.getElementById("hostSlot").value) || 0;
+      const harga = (ram * 10000) + (cpu * 5000) + ((storage/50) * 10000) + (slot * 1000);
+      return harga;
+    }
+
+    // update preview harga
+    const hostPriceEl = document.getElementById("hostPrice");
+    ["hostRam","hostCpu","hostStorage","hostSlot"].forEach(id=>{
+      document.getElementById(id).addEventListener("input", () => {
+        hostPriceEl.textContent = "💰 Total Harga: Rp" + calcHostPrice().toLocaleString();
+      });
+    });
+    // set default
+    hostPriceEl.textContent = "💰 Total Harga: Rp" + calcHostPrice().toLocaleString();
+
+    // update jasa dev price
+    const typeEl = document.getElementById("devType");
+    const amountEl = document.getElementById("devAmount");
+    const pricePreview = document.getElementById("pricePreview");
+    function updateDevPrice(){
+      const type = typeEl.value;
+      const amount = parseInt(amountEl.value) || 1;
+      const harga = (type === "minggu") ? 50000*amount : 150000*amount;
+      pricePreview.textContent = "💰 Total Harga: Rp" + harga.toLocaleString();
+      return harga;
+    }
+    typeEl.addEventListener("change", updateDevPrice);
+    amountEl.addEventListener("input", updateDevPrice);
+    updateDevPrice();
+
+    // handle paket pilih
+    const selectButtons = document.querySelectorAll(".select-paket");
+    let selectedHosting = "";
+    const selectedLabel = document.getElementById("selectedLabel");
+    const orderCard = document.getElementById("orderCard");
+    selectButtons.forEach(btn=>{
+      btn.addEventListener("click", (e)=>{
+        const paket = e.currentTarget.closest('[data-paket]')?.getAttribute('data-paket');
+        if(!paket){
+          // if clicked inner button
+          const container = e.currentTarget.parentElement;
+          selectedHosting = container.getAttribute('data-paket') || "";
+        } else selectedHosting = paket;
+        // if not found above, try parent
+        if(!selectedHosting) {
+          const p = e.currentTarget.closest('[data-paket]');
+          if(p) selectedHosting = p.dataset.paket;
+        }
+        if(!selectedHosting) selectedHosting = "Custom";
+        selectedLabel.textContent = selectedHosting;
+        // tampilkan form (animasi)
+        orderCard.classList.add('show');
+        orderCard.classList.remove('fade-up');
+        orderCard.classList.add('fade-up','show');
+        // scroll to form (halus)
+        orderCard.scrollIntoView({behavior:'smooth', block:'center'});
+      });
+    });
+
+    // fallback open function: buka WA di tab baru; return reference if opened
+    function openWhatsAppLink(url) {
+      // usahakan membuka popup langsung (dari event user)
+      const win = window.open(url, '_blank');
+      if(!win) {
+        // popup diblokir, berikan fallback (ganti location di same tab)
+        window.location.href = url;
+      }
+      return win;
+    }
+
+    // === HOSTING FORM SUBMIT ===
+    document.getElementById('hostingForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+
+      const name = document.getElementById('hostName').value.trim();
+      const wa = document.getElementById('hostWa').value.trim();
+      const ram = document.getElementById("hostRam").value;
+      const cpu = document.getElementById("hostCpu").value;
+      const storage = document.getElementById("hostStorage").value;
+      const slot = document.getElementById("hostSlot").value;
+      const note = document.getElementById('hostNote').value.trim();
+      const statusEl = document.getElementById('hostStatus');
+
+      if(!selectedHosting) {
+        statusEl.textContent = "⚠️ Silakan pilih paket hosting terlebih dahulu.";
+        return;
+      }
+      // validasi nomor pemesan minimal format 62...
+      if(!/^62\d{6,}$/.test(wa)) {
+        statusEl.textContent = "⚠️ Nomor WA pemesan harus dalam format 62 (contoh: 628123...).";
+        return;
+      }
+
+      const harga = calcHostPrice();
+
+      // Susun pesan WA
+      const pesan =
+`🔥 *Pesanan Hosting Baru* 🔥
+Nama: ${name}
+WA Pemesan: ${wa}
+Paket: ${selectedHosting}
+RAM: ${ram} GB
+CPU: ${cpu} Core
+Storage: ${storage} MB
+Slot: ${slot}
+Harga: Rp${harga.toLocaleString()}
+Catatan: ${note}`;
+
+      const waUrl = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(pesan)}`;
+
+      // BUKA WHATSAPP SEGERA (agar tidak diblokir)
+      const waWindow = openWhatsAppLink(waUrl);
+
+      // tampilkan pesan status sementara
+      statusEl.textContent = "Mengirim data... (WhatsApp terbuka)";
+
+      // tampilkan fallback link untuk user jika WA tidak terbuka otomatis
+      const fallbackEl = document.getElementById('waFallback');
+      const fallbackLink = document.getElementById('fallbackLink');
+      fallbackLink.href = waUrl;
+      fallbackEl.classList.remove('hidden');
+
+      // kirim juga ke endpoint server jika tersedia (tidak menunggu keberhasilan untuk WA)
+      fetch('/api/order', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          paket: 'hosting ' + selectedHosting,
+          name,
+          wa,
+          note: `RAM: ${ram}GB, CPU: ${cpu} Core, Storage: ${storage}MB, Slot: ${slot}, Total: Rp${harga.toLocaleString()}\n${note}`
+        })
+      })
+      .then(async res=> {
+        if(res.ok) {
+          statusEl.textContent = "✅ Pesanan terkirim ke server. Cek WhatsApp admin untuk konfirmasi.";
+          document.getElementById('hostingForm').reset();
+          hostPriceEl.textContent = "💰 Total Harga: Rp" + calcHostPrice().toLocaleString();
+        } else {
+          const json = await res.json().catch(()=>({}));
+          statusEl.textContent = "⚠️ Server: " + (json.message || res.statusText || 'Gagal menyimpan');
+        }
+      })
+      .catch(err=>{
+        // tidak fatal — WA sudah diupayakan terbuka
+        statusEl.textContent = "⚠️ Tidak dapat mengirim ke server, tapi WhatsApp sudah terbuka. (" + (err.message||'') + ")";
+      });
+    });
+
+    // === JASA DEV FORM SUBMIT ===
+    document.getElementById('devForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+
+      const name = document.getElementById('devName').value.trim();
+      const wa = document.getElementById('devWa').value.trim();
+      const type = document.getElementById('devType').value;
+      const amount = parseInt(document.getElementById('devAmount').value) || 1;
+      const note = document.getElementById('devNote').value.trim();
+      const statusEl = document.getElementById('devStatus');
+      const harga = updateDevPrice();
+
+      if(!/^62\d{6,}$/.test(wa)) {
+        statusEl.textContent = "⚠️ Nomor WA pemesan harus dalam format 62 (contoh: 628123...).";
+        return;
+      }
+
+      const pesan =
+`💻 *Pesanan Jasa Development Baru* 💻
+Nama: ${name}
+WA Pemesan: ${wa}
+Durasi: ${amount} ${type}
+Harga: Rp${harga.toLocaleString()}
+Catatan: ${note}`;
+
+      const waUrl = `https://wa.me/${ADMIN_WA}?text=${encodeURIComponent(pesan)}`;
+      openWhatsAppLink(waUrl);
+
+      // fallback link (jika ingin)
+      document.getElementById('waFallback').classList.remove('hidden');
+
+      statusEl.textContent = "Mengirim data... (WhatsApp terbuka)";
+
+      fetch('/api/order', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({
+          paket: 'jasa-dev',
+          name,
+          wa,
+          note: `Durasi: ${amount} ${type}, Total: Rp${harga.toLocaleString()}\n${note}`
+        })
+      })
+      .then(async res=>{
+        if(res.ok) {
+          statusEl.textContent = "✅ Pesanan jasa terkirim ke server. Cek WhatsApp admin untuk konfirmasi.";
+          document.getElementById('devForm').reset();
+          updateDevPrice();
+        } else {
+          const json = await res.json().catch(()=>({}));
+          statusEl.textContent = "⚠️ Server: " + (json.message || res.statusText || 'Gagal menyimpan');
+        }
+      })
+      .catch(err=>{
+        statusEl.textContent = "⚠️ Tidak dapat mengirim ke server, tapi WhatsApp sudah terbuka. (" + (err.message||'') + ")";
+      });
+
+    });
+
+    // Animasi masuk untuk orderCard
+    window.addEventListener('load', ()=> {
+      setTimeout(()=> {
+        orderCard.classList.add('show');
+        orderCard.classList.remove('fade-up');
+        orderCard.classList.add('fade-up','show');
+      }, 220);
+    });
+
+  </script>
+
+</body>
+</html>
     <!-- Form Hosting -->
     <section id="orderHosting" class="hidden bg-gradient-to-r from-black via-blue-900 to-red-900 p-6 rounded-2xl shadow space-y-4">
       <h3 class="text-xl font-semibold mb-4">Pesan Hosting <span id="selectedHosting"></span></h3>
@@ -269,4 +649,5 @@ Catatan: ${note}`;
   </script>
 </body>
 </html>
+
 
