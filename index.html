@@ -115,8 +115,8 @@
           </div>
 
           <form id="hostingForm" class="mt-4 space-y-4">
-            <input type="text" id="hostName" placeholder="Nama lengkap (contoh: Kleren McDeren)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
-            <input type="tel" id="hostWa" placeholder="Nomor WhatsApp pemesan (6281234567890)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
+            <input type="text" id="hostName" placeholder="Nama lengkap (contoh: Rio Revan)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
+            <input type="tel" id="hostWa" placeholder="Nomor WhatsApp pemesan (628...)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
 
             <div class="grid grid-cols-2 gap-3">
               <input type="number" id="hostRam" min="1" value="1" class="p-3 rounded bg-black/40 border border-slate-700" placeholder="RAM (GB)" />
@@ -138,17 +138,6 @@
             <p id="hostPrice" class="text-sm font-bold text-emerald-400"></p>
             <p id="waFallback" class="text-xs text-slate-400 hidden mt-1">Jika WhatsApp tidak otomatis terbuka, <a id="fallbackLink" href="#" target="_blank" class="text-blue-300 underline">klik di sini</a>.</p>
           </form>
-        </div>
-
-          <div class="glass rounded-2xl p-6 text-sm text-slate-300">
-          <h4 class="font-medium">Informasi</h4>
-          <ul class="mt-2 space-y-1">
-            <li>• Untuk sebelah Kiri Atas Itu DI isi Dengan Brp Ram Kalian Butuhkan</li>
-            <li>• Untuk sebelah Kanan Atas Itu DI isi Dengan Brp Cpu Kalian Butuhkan</li>
-            <li>• Untuk sebelah Kiri Bawah Itu DI isi Dengan Brp Storage Kalian Butuhkan</li>
-            <li>• Untuk sebelah Kanan Bawah Itu DI isi Dengan Brp Slot Player Kalian Butuhkan</li>
-            <li>• Data juga tetap dikirim ke endpoint <code class="text-xs">/api/order</code> (jika tersedia).</li>
-          </ul>
         </div>
 
       </section>
@@ -198,7 +187,7 @@
   <!-- SCRIPT -->
   <script>
     // === GANTI NOMOR WA ADMIN DI SINI (format: 628xxxxxxxxx) ===
-    const ADMIN_WA = "6281275347835";
+    const ADMIN_WA = "6281234567890";
 
     // util: hitung harga hosting (sama logika sebelumnya)
     function calcHostPrice() {
@@ -418,6 +407,14 @@ Catatan: ${note}`;
       setTimeout(()=> {
         orderCard.classList.add('show');
         orderCard.classList.remove('fade-up');
+        orderCard.classList.add('fade-up','show');
+      }, 220);
+    });
+
+  </script>
+
+</body>
+</html>        orderCard.classList.remove('fade-up');
         orderCard.classList.add('fade-up','show');
       }, 220);
     });
