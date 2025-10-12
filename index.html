@@ -115,8 +115,8 @@
           </div>
 
           <form id="hostingForm" class="mt-4 space-y-4">
-            <input type="text" id="hostName" placeholder="Nama lengkap (contoh: Rio Revan)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
-            <input type="tel" id="hostWa" placeholder="Nomor WhatsApp pemesan (628...)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
+            <input type="text" id="hostName" placeholder="Nama lengkap (contoh: Kleren McDeren)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
+            <input type="tel" id="hostWa" placeholder="Nomor WhatsApp pemesan (6281234567890)" required class="w-full p-3 rounded bg-black/40 border border-slate-700" />
 
             <div class="grid grid-cols-2 gap-3">
               <input type="number" id="hostRam" min="1" value="1" class="p-3 rounded bg-black/40 border border-slate-700" placeholder="RAM (GB)" />
@@ -422,96 +422,6 @@ Catatan: ${note}`;
       }, 220);
     });
 
-  </script>
-
-</body>
-</html>
-    <!-- Form Hosting -->
-    <section id="orderHosting" class="hidden bg-gradient-to-r from-black via-blue-900 to-red-900 p-6 rounded-2xl shadow space-y-4">
-      <h3 class="text-xl font-semibold mb-4">Pesan Hosting <span id="selectedHosting"></span></h3>
-
-      <form id="hostingForm" class="space-y-4">
-        <div>
-          <label class="block text-sm">Nama</label>
-          <input id="hostName" required class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-        </div>
-        <div>
-          <label class="block text-sm">Nomor WhatsApp</label>
-          <input id="hostWa" required placeholder="628xxxxxxxxxx" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-        </div>
-
-        <div>
-          <label class="block text-sm">RAM (GB)</label>
-          <input type="number" id="hostRam" min="1" value="1" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-        </div>
-        <div>
-          <label class="block text-sm">CPU (Core)</label>
-          <input type="number" id="hostCpu" min="1" value="1" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-        </div>
-        <div>
-          <label class="block text-sm">Storage (MB)</label>
-          <input type="number" id="hostStorage" min="50" step="50" value="50" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-        </div>
-        <div>
-          <label class="block text-sm">Slot Player</label>
-          <input type="number" id="hostSlot" min="1" value="10" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-        </div>
-
-        <div>
-          <label class="block text-sm">Catatan</label>
-          <textarea id="hostNote" rows="3" class="w-full mt-1 p-2 rounded bg-black border border-slate-700"></textarea>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Kirim Pesanan</button>
-          <div id="hostStatus" class="text-sm text-slate-200"></div>
-        </div>
-        <p id="hostPrice" class="mt-2 font-bold text-green-400"></p>
-      </form>
-    </section>
-
-    <!-- Jasa Development -->
-    <section>
-      <h2 class="text-2xl font-semibold mb-6 text-center">💻 Jasa Script and Website</h2>
-      <div class="bg-gradient-to-r from-black via-blue-900 to-red-900 p-6 rounded-2xl shadow">
-        <form id="devForm" class="space-y-4">
-          <div>
-            <label class="block text-sm">Nama</label>
-            <input id="devName" required class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-          </div>
-          <div>
-            <label class="block text-sm">Nomor WhatsApp</label>
-            <input id="devWa" required placeholder="628xxxxxxxxxx" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-          </div>
-          <div>
-            <label class="block text-sm">Durasi</label>
-            <select id="devType" class="w-full mt-1 p-2 rounded bg-black border border-slate-700">
-              <option value="minggu">Minggu (Rp50.000 / Minggu)</option>
-              <option value="bulan">Bulan (Rp150.000 / Bulan)</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm">Jumlah Durasi</label>
-            <input type="number" id="devAmount" value="1" min="1" class="w-full mt-1 p-2 rounded bg-black border border-slate-700" />
-          </div>
-          <div>
-            <label class="block text-sm">Catatan</label>
-            <textarea id="devNote" rows="3" class="w-full mt-1 p-2 rounded bg-black border border-slate-700"></textarea>
-          </div>
-          <div class="flex items-center gap-3">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Kirim Pesanan</button>
-            <div id="devStatus" class="text-sm text-slate-200"></div>
-          </div>
-          <p id="pricePreview" class="mt-2 font-bold text-green-400"></p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="bg-gradient-to-r from-blue-900 via-black to-red-900 text-center p-4 text-slate-300">
-    &copy; 2025 Ravs Store - All Rights Reserved
-  </footer>
-
   <script>
     const ADMIN_WA = "6281275347835"; // 🔥 GANTI DENGAN NOMOR WHATSAPP KAMU TANPA + DAN TANPA 0 DEPAN
 
@@ -660,6 +570,7 @@ Catatan: ${note}`;
   </script>
 </body>
 </html>
+
 
 
 
