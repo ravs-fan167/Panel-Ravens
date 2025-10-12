@@ -264,10 +264,9 @@ Catatan: ${note}`;
         } else {
           statusEl.textContent = '❌ Gagal: ' + (json?.message || res.statusText);
         }
-      } catch (err) {
-        statusEl.textContent = '⚠️ Error koneksi.';
       }
     });
   </script>
 </body>
 </html>
+
