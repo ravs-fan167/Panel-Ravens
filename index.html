@@ -295,8 +295,8 @@
         return;
       }
       // validasi nomor pemesan minimal format 62...
-      if(!/^62\d{6,}$/.test(wa)) {
-        statusEl.textContent = "⚠️ Nomor WA pemesan harus dalam format 62 (contoh: 628123...).";
+      if(!/^0\d{6,}$/.test(wa)) {
+        statusEl.textContent = "⚠️ Nomor WA pemesan harus dalam format 08 (contoh: 08123...).";
         return;
       }
 
@@ -368,8 +368,8 @@ Catatan: ${note}`;
       const statusEl = document.getElementById('devStatus');
       const harga = updateDevPrice();
 
-      if(!/^62\d{6,}$/.test(wa)) {
-        statusEl.textContent = "⚠️ Nomor WA pemesan harus dalam format 62 (contoh: 628123...).";
+      if(!/^0\d{6,}$/.test(wa)) {
+        statusEl.textContent = "⚠️ Nomor WA pemesan harus dalam format 08 (contoh: 08123...).";
         return;
       }
 
@@ -576,6 +576,7 @@ Catatan: ${note}`;
   </script>
 </body>
 </html>
+
 
 
 
